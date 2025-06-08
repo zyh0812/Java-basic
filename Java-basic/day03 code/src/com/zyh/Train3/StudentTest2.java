@@ -1,6 +1,6 @@
 package com.zyh.Train3;
 
-public class Studen1 {
+public class StudentTest2 {
     public static void main(String[] args) {
         Student[] arr = new Student[3];
         Student stu1 = new Student(1,"张三",22);
@@ -12,9 +12,9 @@ public class Studen1 {
         arr[1] = stu2;
         arr[2] = stu3;
 
-        boolean flag = contains(arr, 1);
-        if(flag){
-            int index = getIndex(arr,1);
+        int index = getIndex(arr , 1);
+
+        if(index > 0){
             arr[index] = null;
             printArr(arr);
 
@@ -34,29 +34,13 @@ public class Studen1 {
     }
 
     //取索引
-    public static int getIndex(Student[] arr,int StudentID){
-        int index = 0;
+    public static int getIndex(Student[] arr, int StudentId){
         for (int i = 0; i < arr.length; i++) {
             Student stu = arr[i];
-            if(stu != null){
-                if(stu.getStudentID() == StudentID){
-                    index = i;
-                }
+            if(StudentId == stu.getStudentID()){
+                return i;
             }
         }
-        return index;
-    }
-
-    //判断是否存在
-    public static boolean contains(Student[] arr,int StudentID){
-        for (int i = 0; i < arr.length; i++) {
-            Student stu = arr[i];
-            if(stu != null){
-                if (stu.getStudentID() == StudentID){
-                    return true;
-                }
-            }
-        }
-        return false;
+        return -1;
     }
 }
